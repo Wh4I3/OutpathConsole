@@ -168,7 +168,7 @@ namespace OutpathConsole
         }
         public string KillAll(string input)
         {
-            string returnString = "KIlling all animals";
+            string returnString = "Killing all animals";
 
             EnemyHealth[] Enemys = Resources.FindObjectsOfTypeAll<EnemyHealth>();
 
@@ -182,7 +182,6 @@ namespace OutpathConsole
 
             return returnString;
         }
-
     }
 }
 
