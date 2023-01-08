@@ -45,6 +45,7 @@ namespace OutpathConsole
         private static string commandLineTextField = "";
         private static string commandInput = "";
         private static Vector2 scrollPosition = Vector2.zero;
+        private static Commands commands;
         public override void OnUpdate()
         {
             string activeScene = SceneManager.GetActiveScene().name;
@@ -64,6 +65,13 @@ namespace OutpathConsole
                 if (PlayerGarden.instance != null)
                 {
                     if (PlayerGarden.instance.inMenu == -1) DisableConsole();
+                }
+                if (commands.Weapon)
+                {
+                    if (Input.GetKey(KeyCode.Mouse1) || Input.GetKey(KeyCode.Mouse1))
+                    {
+                        PlayerWeaponManager.instance.Shoot();
+                    }
                 }
             }
         }
@@ -122,7 +130,7 @@ namespace OutpathConsole
             if (input[0] == '/')
             {
                 string[] parts = input.Split(new char[] { '/', '(', ')' }, 4);
-                Commands commands = new Commands();
+                commands = new Commands();
                 MethodInfo info = commands.GetType().GetMethod(parts[1]);
                 commandPanelText += "\n" + (string)info.Invoke(commands, new object[] { parts[2] });
             }
