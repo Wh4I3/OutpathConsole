@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 using MelonLoader;
 using OutpathConsole;
 
-[assembly: MelonInfo(typeof(Mod), "OutpathConsole", "0.0.1", "Wh4I3")]
+[assembly: MelonInfo(typeof(Mod), "OutpathConsole", "0.0.2", "Wh4I3")]
 [assembly: MelonGame("DAVII PROJECTS", "Outpath")]
 [assembly: MelonColor(ConsoleColor.DarkCyan)]
 [assembly: MelonAuthorColor(ConsoleColor.Cyan)]
