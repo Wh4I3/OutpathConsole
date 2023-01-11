@@ -7,20 +7,44 @@ using System.IO;
 using System;
 using System.Runtime.InteropServices.ComTypes;
 using System.Security.Cryptography;
+using System.Collections.Generic;
 using System.Reflection;
 using OverfortGames.FirstPersonController;
+using OutpathConsole.Commands;
 
 namespace OutpathConsole
 {
     public class Mod : MelonMod
     {
         #region Initializing
+        public static List<OutpathCommand> commandList = new List<OutpathCommand>();
+
         private MelonPreferences_Category controls;
         private MelonPreferences_Entry<KeyCode> openConsole;
 
         private readonly string configDirectory = Directory.GetCurrentDirectory() + "/UserData/OutpathConsole";
         public override void OnInitializeMelon()
         {
+            commandList.Add(new Help());
+            commandList.Add(new Give());
+            commandList.Add(new GiveID());
+            commandList.Add(new GiveAll());
+            commandList.Add(new Remove());
+            commandList.Add(new RemoveID());
+            commandList.Add(new Clear());
+            commandList.Add(new AddCredits());
+            commandList.Add(new RemoveCredits());
+            commandList.Add(new ClearCredits());
+            commandList.Add(new Butcher());
+            commandList.Add(new Tp());
+            commandList.Add(new GetPosition());
+            commandList.Add(new SetJumpCount());
+            commandList.Add(new SetJumpForce());
+            commandList.Add(new ResetJumpCount());
+            commandList.Add(new ResetJumpForce());
+            commandList.Add(new SpawnRandomNPC());
+            commandList.Add(new SpawnRandomProp());
+
             if (!Directory.Exists(configDirectory))         Directory.CreateDirectory(configDirectory);
 
             controls = MelonPreferences.CreateCategory("Controls");
@@ -45,7 +69,6 @@ namespace OutpathConsole
         private static string commandLineTextField = "";
         private static string commandInput = "";
         private static Vector2 scrollPosition = Vector2.zero;
-        private static Commands commands;
         public override void OnUpdate()
         {
             string activeScene = SceneManager.GetActiveScene().name;
@@ -54,7 +77,7 @@ namespace OutpathConsole
                 if (Input.GetKeyDown(openConsole.Value)) EnableConsole();
                 if (Input.GetKeyDown(KeyCode.Escape)) DisableConsole();
 
-                if (commandLineTextField.Length > 0)
+                if (commandLineTextField.Length > 0 && consoleVisible)
                 {
                     for (int i = 0; i < commandLineTextField.Length; i++)
                     {
@@ -62,17 +85,8 @@ namespace OutpathConsole
                     }
                 }
 
-                if (PlayerGarden.instance != null)
-                {
-                    if (PlayerGarden.instance.inMenu == -1) DisableConsole();
-                }
-                if (commands.Weapon)
-                {
-                    if (Input.GetKey(KeyCode.Mouse1) || Input.GetKey(KeyCode.Mouse1))
-                    {
-                        PlayerWeaponManager.instance.Shoot();
-                    }
-                }
+                if (PlayerGarden.instance != null)  if (PlayerGarden.instance.inMenu == -1) DisableConsole();
+
             }
         }
         public static void DrawConsolePanel()
@@ -113,26 +127,23 @@ namespace OutpathConsole
         }
         private static void ConfirmConsole()
         {
-            if (consoleVisible)
+            commandInput = commandLineTextField;
+            if (commandInput[0] != '/')
             {
-                Melon<Mod>.Logger.Msg("ConsoleConfirmed");
-                commandInput = commandLineTextField;
-                if (commandInput[0] != '/')
-                {
-                    commandPanelText += commandLineTextField;
-                }
-                commandLineTextField = "";
-                Command(commandInput);
+                commandPanelText += commandLineTextField;
             }
-        }
-        public static void Command(string input)
-        {
-            if (input[0] == '/')
+
+            commandLineTextField = "";
+            if (commandInput[0] == '/')
             {
-                string[] parts = input.Split(new char[] { '/', '(', ')' }, 4);
-                commands = new Commands();
-                MethodInfo info = commands.GetType().GetMethod(parts[1]);
-                commandPanelText += "\n" + (string)info.Invoke(commands, new object[] { parts[2] });
+                string[] parts = commandInput.Split(new char[] { '/', '(', ')' }, 4);
+                foreach (OutpathCommand command in commandList)
+                {
+                    if (command.CommandName == parts[1])
+                    {
+                        commandPanelText += "\n" + command.Command(parts[2].TrimEnd(new char[] {'\n'}));
+                    }
+                }
             }
         }
     }

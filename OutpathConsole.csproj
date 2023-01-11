@@ -318,7 +318,30 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Commands.cs" />
+    <Compile Include="Commands\AddCredits.cs" />
+    <Compile Include="Commands\Butcher.cs" />
+    <Compile Include="Commands\SetJumpForce.cs" />
+    <Compile Include="Commands\ResetJumpCount.cs" />
+    <Compile Include="Commands\ResetJumpForce.cs" />
+    <Compile Include="Commands\ClearCredits.cs" />
+    <Compile Include="Commands\Clear.cs" />
+    <Compile Include="Commands\GetAll.cs" />
+    <Compile Include="Commands\GetID.cs" />
+    <Compile Include="Commands\Get.cs" />
+    <Compile Include="Commands\GetPosition.cs" />
+    <Compile Include="Commands\Give.cs" />
+    <Compile Include="Commands\GiveAll.cs" />
+    <Compile Include="Commands\GiveID.cs" />
+    <Compile Include="Commands\Help.cs" />
+    <Compile Include="Commands\RemoveCredits.cs" />
+    <Compile Include="Commands\RemoveID.cs" />
+    <Compile Include="Commands\Remove.cs" />
+    <Compile Include="Commands\Respawn.cs" />
+    <Compile Include="Commands\SetJumpCount.cs" />
+    <Compile Include="Commands\SpawnRandomNPC.cs" />
+    <Compile Include="Commands\SpawnRandomProp.cs" />
+    <Compile Include="Commands\Tp.cs" />
+    <Compile Include="OutpathCommand.cs" />
     <Compile Include="Mod.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
