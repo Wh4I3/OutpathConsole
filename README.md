@@ -6,37 +6,37 @@ You can download Melon Loader here: https://melonwiki.xyz/#/README?id=automated-
 
 # Commands
 ### Help:
-  Help(<Command>\): Sends a list of commands if <Command>\ is empty. Otherwise it tells what the specified command does.
+  Help(<\Command>\): Sends a list of commands if <\Command>\ is empty. Otherwise it tells what the specified command does.
 ### Respawn:
   Respawn(): Makes you respawn.
 ### Give:
-  Give(<Item Name>\, <Amount>\): Gives you the specified amount of the specified item.
+  Give(<\Item Name>\, <\Amount>\): Gives you the specified amount of the specified item.
 ### GiveID:
-  GiveID(<Item ID>\,<Amount>\): Gives you the specified amount of the item with the specified item id.
+  GiveID(<\Item ID>\,<\Amount>\): Gives you the specified amount of the item with the specified item id.
 ### GiveAll:
-  GiveAll(<Amount>\): Gives you the specified amount of every item.
+  GiveAll(<\Amount>\): Gives you the specified amount of every item.
 ### Remove:
-  Remove(<Item Name>\, <Amount>\): Removes the specified amount of the specified item.
+  Remove(<\Item Name>\, <\Amount>\): Removes the specified amount of the specified item.
 ### RemoveID:
-   RemoveID(<Item ID>\, <Amount>\): Removes the specified amount of the item with the specified item id.
+   RemoveID(<\Item ID>\, <\Amount>\): Removes the specified amount of the item with the specified item id.
 ### Get:
-  Get(<ItemID>\): Tells you the name of the item with the specified item id.
+  Get(<\ItemID>\): Tells you the name of the item with the specified item id.
 ### GetID:
-  GetID(<Item Name>\): Tells you the item id of the item with the specified name.
+  GetID(<\Item Name>\): Tells you the item id of the item with the specified name.
 ### GetAll:
   GetAll(): Tells you the ItemID and itemName of every item.
 ### Clear:
   Clear(): Removes all your items.
 ### AddCredits:
-  AddCredits(<Amount>\): Gives you the specified amount of the games currency.
+  AddCredits(<\Amount>\): Gives you the specified amount of the games currency.
 ### RemoveCredits:
-  RemoveCredits(<Amount>\): Removes the specified amount of the games currency.
+  RemoveCredits(<\Amount>\): Removes the specified amount of the games currency.
 ### ClearCredits:
   ClearCredits(): Removes all your credits.
 ### Butcher:
   Butcher(): Kills all animals.
 ### Tp:
-  Tp(<x>\, <y>\, <z>\): Teleports you to the specified position.
+  Tp(<\x>\, <\y>\, <\z>\): Teleports you to the specified position.
 ### GetPosition:
   GetPosition(): Gets your current position.
 ### SetJumpCount:
