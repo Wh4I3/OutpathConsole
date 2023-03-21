@@ -1,6 +1,6 @@
 # OutpathConsole
 OutpathConsole is a mod that adds a developer console for Outpath that uses Melon Loader to run.
-You can change the controls for 
+You can change the controls in the config file found in "/Outpath First Journey/UserData/OutpathConsole/"
 
 You can download Melon Loader here: https://melonwiki.xyz/#/README?id=automated-installation
 
